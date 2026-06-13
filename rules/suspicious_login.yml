@@ -1,0 +1,5 @@
+title: Failed Login Detection
+
+detection:
+  keywords:
+    - login_failed
