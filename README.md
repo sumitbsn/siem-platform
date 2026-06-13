@@ -449,4 +449,4 @@ Enterprise SIEM/XDR/MDR platforms such as:
 
 # License
 
-MIT LicenseFileNotFoundError: [Errno 2] No such file or directory: '../collector/raw_logs/events.json'FileNotFoundError: [Errno 2] No such file or directory: '../collector/raw_logs/events.json'
+MIT License
