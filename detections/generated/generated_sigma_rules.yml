@@ -1,0 +1,87 @@
+```yaml
+title: Suspicious VPN Login Volume
+logsource:
+  product: vpn
+  service: openvpn
+detection:
+  selection:
+    activity_name: vpn_login
+    category_name: Security
+  timeframe: 15m
+  condition: selection | count > 25
+mitre_attack_ids:
+  - T1077
+```
+
+---
+
+title: Suspicious Foreign VPN Login
+id: sigma-2026-06-13-suspicious-foreign-vpn-login
+description: Detects VPN login events originating from foreign countries or exhibiting high risk scores, indicating potential credential misuse or lateral movement.
+status: experimental
+logsource:
+  product: vpn
+  service: authentication
+detection:
+  foreign_country:
+    event_type: vpn_login
+    country:
+      - Brazil
+      - Germany
+  high_risk_score:
+    event_type: vpn_login
+    risk_score: >70
+  condition: foreign_country or high_risk_score
+mitre:
+  tactics:
+    - TA0007   # Persistence
+  techniques:
+    - T1078   # Valid Accounts
+---
+
+---
+
+title: High Risk Activity Detection  
+logsource:  
+  product: security  
+  service: generic  
+
+detection:  
+  selection:  
+    risk_score:  
+      - ">=": 90  
+    event_type:  
+      - login_success  
+      - process_start  
+      - firewall_allow  
+      - firewall_deny  
+  condition: selection  
+
+fields:  
+  - user  
+  - source_ip  
+  - destination_ip  
+  - risk_score  
+  - event_type  
+
+mitre:  
+  - T1078   # Valid Accounts
+
+confidence: medium  
+level: high  
+
+---
+
+```yaml
+title: Detect High Volume of Failed Login Attempts
+logsource:
+  product: generic
+  service: security
+
+detection:
+  failed_login_events:
+    activity_name: login_failed
+  condition: failed_login_events by src_endpoint.ip count >= 20 within timeframe 1h
+
+tags: [attack.t1110]
+```

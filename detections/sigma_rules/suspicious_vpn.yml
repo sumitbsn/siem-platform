@@ -1,0 +1,11 @@
+title: Suspicious VPN Login
+
+id: sigma-002
+
+level: high
+
+detection:
+
+  keywords:
+
+    - vpn_login

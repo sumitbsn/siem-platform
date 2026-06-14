@@ -1,19 +1,88 @@
 import yaml
+from pathlib import Path
 
-def load_sigma_rule(rule_file):
+SIGMA_DIRS = [
+    Path("detections/sigma_rules"),
+    Path("detections/custom")
+]
 
-    with open(rule_file) as f:
-        return yaml.safe_load(f)
+
+def load_rules():
+
+    rules = []
+
+    for directory in SIGMA_DIRS:
+
+        if not directory.exists():
+            continue
+
+        for file in directory.glob("*.yml"):
+
+            with open(file) as f:
+
+                try:
+                    rules.append(
+                        yaml.safe_load(f)
+                    )
+
+                except Exception as e:
+
+                    print(
+                        f"Failed loading {file}: {e}"
+                    )
+
+    return rules
 
 
-def match_sigma(event, rule):
+RULES = load_rules()
 
-    keywords = rule["detection"]["keywords"]
 
-    for keyword in keywords:
+def run_sigma(event):
 
-        if keyword in event["event_type"]:
+    alerts = []
 
-            return True
+    for rule in RULES:
 
-    return False
+        detection = rule.get(
+            "detection",
+            {}
+        )
+
+        keywords = detection.get(
+            "keywords",
+            []
+        )
+
+        event_text = str(event).lower()
+
+        if any(
+            keyword.lower() in event_text
+            for keyword in keywords
+        ):
+
+            alerts.append({
+
+                "alert":
+                    rule.get(
+                        "title",
+                        "Sigma Match"
+                    ),
+
+                "rule_id":
+                    rule.get(
+                        "id",
+                        "unknown"
+                    ),
+
+                "severity":
+                    rule.get(
+                        "level",
+                        "medium"
+                    ),
+
+                "event":
+                    event
+
+            })
+
+    return alerts

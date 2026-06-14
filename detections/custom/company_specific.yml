@@ -1,0 +1,13 @@
+title: High Risk Country Login
+
+id: custom-001
+
+level: critical
+
+detection:
+
+  keywords:
+
+    - russia
+    - north korea
+    - iran

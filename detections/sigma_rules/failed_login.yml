@@ -1,0 +1,11 @@
+title: Failed Login Detection
+
+id: sigma-001
+
+level: high
+
+detection:
+
+  keywords:
+
+    - login_failed
