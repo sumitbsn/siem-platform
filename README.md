@@ -1,23 +1,32 @@
-# SIEM Platform — Security Event Simulation & Detection Pipeline
+# SIEM Platform — Security Event Simulation, Detection & AI-Powered Investigation Pipeline
 
-A modular SIEM-style security analytics platform built using Python, FastAPI, Redis Streams, OCSF normalization, and detection pipelines.
+A modular SIEM-style security analytics platform built using Python, FastAPI, Redis Streams, OCSF normalization, Sigma rules, stateful correlation, and local AI models.
 
-This project simulates how enterprise SIEM/XDR/MDR systems ingest, normalize, correlate, and detect suspicious security activity from multiple vendor-like event sources.
+This project simulates how enterprise SIEM/XDR/MDR platforms ingest, normalize, correlate, detect, investigate, and enrich suspicious security activity from multiple telemetry sources.
 
 ---
 
 # Features
 
-* Security event simulator API
-* 10,000+ generated security events
-* Vendor-style REST endpoints
-* Rate-limited API polling
-* Redis Streams integration
-* OCSF normalization layer
-* Stateless detections
-* Stateful correlation detections
-* Findings/alerts generation
-* Modular microservice architecture
+* Security Event Simulator API
+* 100,000+ Generated Security Events
+* Vendor-Style REST Endpoints
+* Rate-Limited API Polling
+* Redis Streams Integration
+* OCSF Normalization Layer
+* Sigma Rule Detection Engine
+* Custom Detection Rules
+* Stateless Detections
+* Stateful Correlation Detections
+* Findings / Alert Generation
+* Incident Aggregation
+* MITRE ATT&CK Mapping
+* Executive Security Reporting
+* Local LLM Integration (Ollama)
+* GPT-OSS Support
+* AI Incident Analysis
+* AI Generated Sigma Rules
+* Modular Microservice Architecture
 
 ---
 
@@ -55,11 +64,44 @@ This project simulates how enterprise SIEM/XDR/MDR systems ingest, normalize, co
                 └──────────┬──────────┘
                            ▼
                 ┌─────────────────────┐
-                │ Detection Engine    │
+                │ Sigma Engine        │
                 └──────────┬──────────┘
                            ▼
                 ┌─────────────────────┐
-                │ Findings / Alerts   │
+                │ Stateless Rules     │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ Stateful Rules      │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ Findings            │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ Incident Builder    │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ MITRE Mapper        │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ AI Incident         │
+                │ Analyzer            │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ Executive Report    │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ AI Sigma Generator  │
+                └──────────┬──────────┘
+                           ▼
+                ┌─────────────────────┐
+                │ Generated Rules     │
                 └─────────────────────┘
 ```
 
@@ -73,34 +115,50 @@ siem-platform/
 ├── simulator/
 │   ├── api.py
 │   ├── generator.py
-│   ├── events.json
+│   └── events.json
 │
 ├── collector/
 │   ├── collector.py
-│   ├── raw_logs/
+│   └── raw_logs/
 │
 ├── queue/
-│   ├── redis_producer.py
+│   └── redis_producer.py
 │
 ├── parser/
-│   ├── ocsf_mapper.py
+│   └── ocsf_mapper.py
 │
 ├── detections/
 │   ├── sigma_engine.py
 │   ├── stateless.py
 │   ├── stateful.py
+│   │
+│   ├── sigma_rules/
+│   ├── custom/
+│   └── generated/
 │
 ├── findings/
-│   ├── writer.py
+│   └── writer.py
 │
 ├── pipeline/
-│   ├── run_pipeline.py
+│   └── run_pipeline.py
+│
+├── ai/
+│   ├── __init__.py
+│   ├── ollama_client.py
+│   ├── incident_builder.py
+│   ├── mitre_mapper.py
+│   ├── ai_incident_analyzer.py
+│   └── sigma_generator.py
 │
 ├── alerts/
 │   ├── findings.json
+│   ├── incidents.json
+│   ├── enriched_incidents.json
+│   └── executive_report.json
 │
 ├── docker-compose.yml
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -116,6 +174,9 @@ siem-platform/
 * YAML
 * Sigma Rules
 * Stateful Correlation
+* MITRE ATT&CK
+* Ollama
+* GPT-OSS
 * Security Event Processing
 
 ---
@@ -129,8 +190,8 @@ The simulator exposes multiple vendor-style endpoints.
 | `/events`       | All events          |
 | `/api/auth`     | Authentication logs |
 | `/api/firewall` | Firewall logs       |
-| `/api/edr`      | EDR/process logs    |
-| `/api/cloud`    | Cloud/VPN logs      |
+| `/api/edr`      | EDR / Process logs  |
+| `/api/cloud`    | Cloud / VPN logs    |
 
 ---
 
@@ -160,7 +221,7 @@ sudo apt update
 sudo apt install python3 python3-pip python3-venv -y
 ```
 
-Verify installation:
+Verify:
 
 ```bash
 python3 --version
@@ -172,25 +233,67 @@ python3 --version
 
 ```bash
 sudo apt install redis-server -y
-```
 
-Enable and start Redis:
-
-```bash
 sudo systemctl enable redis-server
 sudo systemctl start redis-server
 ```
 
-Verify Redis:
+Verify:
 
 ```bash
 redis-cli ping
 ```
 
-Expected output:
+Expected:
 
 ```text
 PONG
+```
+
+---
+
+# Local AI Setup (Optional)
+
+## Install Ollama
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Verify:
+
+```bash
+ollama --version
+```
+
+---
+
+## Start Ollama
+
+```bash
+ollama serve
+```
+
+---
+
+## Pull GPT-OSS
+
+```bash
+ollama pull gpt-oss:20b
+```
+
+Alternative models:
+
+```bash
+ollama pull qwen3:8b
+ollama pull llama3.1:8b
+ollama pull gemma3:12b
+```
+
+Verify:
+
+```bash
+ollama list
 ```
 
 ---
@@ -200,11 +303,9 @@ PONG
 ## 1. Clone Repository
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/sumitbsn/siem-platform.git
 cd siem-platform
 ```
-
----
 
 ## 2. Create Virtual Environment
 
@@ -221,8 +322,6 @@ source venv/bin/activate
 python -m venv venv
 venv\Scripts\activate
 ```
-
----
 
 ## 3. Install Dependencies
 
@@ -255,20 +354,16 @@ Open:
 http://localhost:8000/
 ```
 
-The homepage displays all available API endpoints.
-
 ---
 
 ## Step 3 — Run Collector
-
-Open another terminal:
 
 ```bash
 cd collector
 python collector.py
 ```
 
-Logs will be stored in:
+Logs stored in:
 
 ```text
 collector/raw_logs/
@@ -283,7 +378,7 @@ cd queue
 python redis_producer.py
 ```
 
-Redis stream name:
+Redis stream:
 
 ```text
 security_events
@@ -301,33 +396,112 @@ python -m pipeline.run_pipeline
 
 ---
 
+# Optional AI Commands
+
+## Build Incidents
+
+```bash
+python -m ai.incident_builder
+```
+
+Output:
+
+```text
+alerts/incidents.json
+```
+
+---
+
+## AI Incident Analysis
+
+```bash
+python -m ai.ai_incident_analyzer
+```
+
+Output:
+
+```text
+alerts/executive_report.json
+```
+
+---
+
+## Generate Sigma Rules
+
+```bash
+python -m ai.sigma_generator
+```
+
+Output:
+
+```text
+detections/generated/generated_sigma_rules.yml
+```
+
+---
+
+# Full End-to-End Execution
+
+```bash
+python -m pipeline.run_pipeline
+```
+
+Performs:
+
+1. OCSF Normalization
+2. Sigma Detection
+3. Stateless Detection
+4. Stateful Detection
+5. Findings Generation
+6. Incident Building
+7. MITRE Mapping
+8. AI Incident Analysis
+9. Executive Report Generation
+10. AI Sigma Rule Generation
+
+---
+
 # Detection Results
 
-Alerts are written to:
+Primary outputs:
 
 ```text
 alerts/findings.json
+alerts/incidents.json
+alerts/enriched_incidents.json
+alerts/executive_report.json
+detections/generated/generated_sigma_rules.yml
 ```
 
-Example alert:
+---
 
-```json
-{
-  "alert": "Possible Brute Force Attack",
-  "source_ip": "10.1.1.5",
-  "count": 5
-}
+# Detection Engine
+
+## Community Sigma Rules
+
+```text
+detections/sigma_rules/
 ```
+
+## Organization Custom Rules
+
+```text
+detections/custom/
+```
+
+## AI Generated Rules
+
+```text
+detections/generated/
+```
+
+Generated rules should be reviewed before production use.
 
 ---
 
 # Detection Types
 
 ## Sigma Rules
-
-YAML-based portable detections.
-
-Example:
 
 ```yaml
 title: Failed Login Detection
@@ -337,26 +511,14 @@ detection:
     - login_failed
 ```
 
----
-
 ## Stateless Detections
-
-Single-event analysis.
-
-Example:
 
 ```python
 if event["risk_score"] > 80:
     alert()
 ```
 
----
-
 ## Stateful Detections
-
-Correlation across multiple events.
-
-Example:
 
 ```text
 5 failed logins from same IP
@@ -365,10 +527,6 @@ Example:
 ---
 
 # OCSF Mapping
-
-The parser normalizes events into OCSF-like schema.
-
-Example:
 
 ```json
 {
@@ -390,32 +548,41 @@ Example:
 
 ---
 
+# AI Investigation Pipeline
+
+```text
+findings.json
+      ↓
+incident_builder.py
+      ↓
+incidents.json
+      ↓
+mitre_mapper.py
+      ↓
+enriched_incidents.json
+      ↓
+ai_incident_analyzer.py
+      ↓
+executive_report.json
+      ↓
+sigma_generator.py
+      ↓
+generated_sigma_rules.yml
+```
+
+---
+
 # Current Detection Examples
 
 ## Stateless
 
-* High risk activity
-* Suspicious VPN login
+* High Risk Activity
+* Suspicious VPN Login
 
 ## Stateful
 
-* Brute-force detection
-* Port scan detection
-
----
-
-# Future Improvements
-
-* Kafka integration
-* Elasticsearch indexing
-* Kibana dashboards
-* Real-time streaming detections
-* MITRE ATT&CK mapping
-* Threat intelligence enrichment
-* UEBA analytics
-* Async collectors
-* Multi-tenant support
-* Detection API dashboard
+* Brute Force Detection
+* Port Scan Detection
 
 ---
 
@@ -423,14 +590,18 @@ Example:
 
 This project demonstrates:
 
-* SIEM architecture
-* Security event pipelines
-* Detection engineering
-* Stateful correlation
-* OCSF normalization
-* Streaming security analytics
-* API-based telemetry ingestion
-* Redis-based event streaming
+* SIEM Architecture
+* Security Event Pipelines
+* Detection Engineering
+* Sigma Rule Development
+* Stateful Correlation
+* OCSF Normalization
+* MITRE ATT&CK Mapping
+* AI-Powered Security Analysis
+* Local LLM Integration
+* Streaming Security Analytics
+* API-Based Telemetry Ingestion
+* Redis-Based Event Streaming
 
 ---
 

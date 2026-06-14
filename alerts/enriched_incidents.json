@@ -1,0 +1,712 @@
+[
+  {
+    "incident_type": "Suspicious VPN Login",
+    "source_ip": "unknown",
+    "alert_count": 138,
+    "sample_alerts": [
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.37.61.68"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.30.96"
+          },
+          "user": {
+            "name": "svc_backup"
+          },
+          "severity_id": 1
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.139.68.200"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.3.21"
+          },
+          "user": {
+            "name": "john"
+          },
+          "severity_id": 8
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.2.54.101"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.89.53"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 13
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.218.90.102"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.124.143"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 40
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.81.165.251"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.245.41"
+          },
+          "user": {
+            "name": "admin"
+          },
+          "severity_id": 3
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.49.144.128"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.191.140"
+          },
+          "user": {
+            "name": "admin"
+          },
+          "severity_id": 94
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.117.176.179"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.230.237"
+          },
+          "user": {
+            "name": "svc_backup"
+          },
+          "severity_id": 15
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.109.146.31"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.239.213"
+          },
+          "user": {
+            "name": "admin"
+          },
+          "severity_id": 68
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.120.75.79"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.19.152"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 78
+        }
+      },
+      {
+        "alert": "Suspicious VPN Login",
+        "rule_id": "sigma-002",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "vpn_login",
+          "src_endpoint": {
+            "ip": "10.70.248.167"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.195.139"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 1
+        }
+      }
+    ],
+    "mitre_techniques": [
+      "T1078"
+    ]
+  },
+  {
+    "incident_type": "Suspicious Foreign VPN Login",
+    "source_ip": "unknown",
+    "alert_count": 67,
+    "sample_alerts": [
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Brazil",
+        "event": {
+          "event_id": "25df47e5-e811-46f5-8cc0-b4108019f4a7",
+          "timestamp": "2026-06-13T12:16:45.930307",
+          "event_type": "vpn_login",
+          "user": "svc_backup",
+          "source_ip": "10.37.61.68",
+          "destination_ip": "172.16.30.96",
+          "risk_score": 1,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Germany",
+        "event": {
+          "event_id": "f6816deb-8417-4f87-abe7-6686a6fbe2c6",
+          "timestamp": "2026-06-13T12:17:35.930307",
+          "event_type": "vpn_login",
+          "user": "admin",
+          "source_ip": "10.49.144.128",
+          "destination_ip": "172.16.191.140",
+          "risk_score": 94,
+          "country": "Germany"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Brazil",
+        "event": {
+          "event_id": "6f5bbd3f-5993-4026-b3bb-be353000250e",
+          "timestamp": "2026-06-13T12:17:44.930307",
+          "event_type": "vpn_login",
+          "user": "admin",
+          "source_ip": "10.109.146.31",
+          "destination_ip": "172.16.239.213",
+          "risk_score": 68,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Brazil",
+        "event": {
+          "event_id": "9d428d1a-1fbd-4aac-bb29-d7c059de8c9d",
+          "timestamp": "2026-06-13T12:17:49.930307",
+          "event_type": "vpn_login",
+          "user": "alice",
+          "source_ip": "10.70.248.167",
+          "destination_ip": "172.16.195.139",
+          "risk_score": 1,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Germany",
+        "event": {
+          "event_id": "30fa5869-c88d-4949-8fa1-74ef0fd8dfaf",
+          "timestamp": "2026-06-13T12:17:55.930307",
+          "event_type": "vpn_login",
+          "user": "svc_backup",
+          "source_ip": "10.255.36.43",
+          "destination_ip": "172.16.28.190",
+          "risk_score": 46,
+          "country": "Germany"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Germany",
+        "event": {
+          "event_id": "5b5937c3-6afb-47b4-b1d5-1ad3f074984f",
+          "timestamp": "2026-06-13T12:17:56.930307",
+          "event_type": "vpn_login",
+          "user": "svc_backup",
+          "source_ip": "10.199.10.145",
+          "destination_ip": "172.16.15.200",
+          "risk_score": 91,
+          "country": "Germany"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Brazil",
+        "event": {
+          "event_id": "1a567d58-a0a7-46c4-86e1-0ff68fe0be4f",
+          "timestamp": "2026-06-13T12:18:01.930307",
+          "event_type": "vpn_login",
+          "user": "svc_backup",
+          "source_ip": "10.74.99.76",
+          "destination_ip": "172.16.147.162",
+          "risk_score": 93,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Germany",
+        "event": {
+          "event_id": "893371b3-5046-43ce-b962-ec07587b00e8",
+          "timestamp": "2026-06-13T12:18:09.930307",
+          "event_type": "vpn_login",
+          "user": "john",
+          "source_ip": "10.7.236.197",
+          "destination_ip": "172.16.185.119",
+          "risk_score": 97,
+          "country": "Germany"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Brazil",
+        "event": {
+          "event_id": "990dac44-e0c3-4337-a59f-eca7bc15fb47",
+          "timestamp": "2026-06-13T12:18:16.930307",
+          "event_type": "vpn_login",
+          "user": "admin",
+          "source_ip": "10.192.214.59",
+          "destination_ip": "172.16.41.161",
+          "risk_score": 57,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "Suspicious Foreign VPN Login",
+        "country": "Germany",
+        "event": {
+          "event_id": "4b96a5ae-3e2a-4c6a-b85e-1305cad2317b",
+          "timestamp": "2026-06-13T12:18:18.930307",
+          "event_type": "vpn_login",
+          "user": "john",
+          "source_ip": "10.28.128.12",
+          "destination_ip": "172.16.82.164",
+          "risk_score": 4,
+          "country": "Germany"
+        }
+      }
+    ],
+    "mitre_techniques": [
+      "Unknown"
+    ]
+  },
+  {
+    "incident_type": "High Risk Activity",
+    "source_ip": "unknown",
+    "alert_count": 199,
+    "sample_alerts": [
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "08c03aed-eafd-4e6a-84a8-e242d2943c01",
+          "timestamp": "2026-06-13T12:16:48.930307",
+          "event_type": "login_success",
+          "user": "john",
+          "source_ip": "10.59.221.21",
+          "destination_ip": "172.16.103.122",
+          "risk_score": 94,
+          "country": "USA"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "def4b0be-18a0-455f-bf54-da1ec5fa3a2b",
+          "timestamp": "2026-06-13T12:16:50.930307",
+          "event_type": "firewall_allow",
+          "user": "alice",
+          "source_ip": "10.175.18.45",
+          "destination_ip": "172.16.102.90",
+          "risk_score": 90,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "f110fcbf-811f-4a39-bc75-5252b590bed4",
+          "timestamp": "2026-06-13T12:16:51.930307",
+          "event_type": "firewall_deny",
+          "user": "john",
+          "source_ip": "10.27.3.166",
+          "destination_ip": "172.16.116.139",
+          "risk_score": 90,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "d1d74fde-e5ad-436c-b428-7f0cc550b574",
+          "timestamp": "2026-06-13T12:16:55.930307",
+          "event_type": "firewall_deny",
+          "user": "john",
+          "source_ip": "10.131.174.39",
+          "destination_ip": "172.16.140.219",
+          "risk_score": 89,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "be95f1b9-de2a-4e50-99df-91a10e71efe9",
+          "timestamp": "2026-06-13T12:16:56.930307",
+          "event_type": "process_start",
+          "user": "alice",
+          "source_ip": "10.103.2.106",
+          "destination_ip": "172.16.28.105",
+          "risk_score": 81,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "f185d25a-eb00-4d73-914d-932709946e03",
+          "timestamp": "2026-06-13T12:16:59.930307",
+          "event_type": "process_start",
+          "user": "admin",
+          "source_ip": "10.239.41.135",
+          "destination_ip": "172.16.189.15",
+          "risk_score": 100,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "4f6b9447-744c-4f53-ab09-4b00704df45c",
+          "timestamp": "2026-06-13T12:17:18.930307",
+          "event_type": "login_success",
+          "user": "alice",
+          "source_ip": "10.23.150.111",
+          "destination_ip": "172.16.240.188",
+          "risk_score": 91,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "78bc0a8e-de47-43a1-9a52-7eed69f6bedf",
+          "timestamp": "2026-06-13T12:17:28.930307",
+          "event_type": "firewall_allow",
+          "user": "svc_backup",
+          "source_ip": "10.132.184.47",
+          "destination_ip": "172.16.38.109",
+          "risk_score": 98,
+          "country": "Brazil"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "2cbbcc96-cfde-4ead-b813-b397614f5baf",
+          "timestamp": "2026-06-13T12:17:32.930307",
+          "event_type": "firewall_allow",
+          "user": "admin",
+          "source_ip": "10.74.68.122",
+          "destination_ip": "172.16.16.135",
+          "risk_score": 84,
+          "country": "USA"
+        }
+      },
+      {
+        "alert": "High Risk Activity",
+        "event": {
+          "event_id": "d308ca76-c372-42db-9b15-03b9da4b849b",
+          "timestamp": "2026-06-13T12:17:33.930307",
+          "event_type": "firewall_allow",
+          "user": "john",
+          "source_ip": "10.62.94.123",
+          "destination_ip": "172.16.172.166",
+          "risk_score": 84,
+          "country": "Germany"
+        }
+      }
+    ],
+    "mitre_techniques": [
+      "T1078"
+    ]
+  },
+  {
+    "incident_type": "Failed Login Detection",
+    "source_ip": "unknown",
+    "alert_count": 143,
+    "sample_alerts": [
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.181.250.170"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.77.133"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 51
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.93.130.21"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.33.204"
+          },
+          "user": {
+            "name": "john"
+          },
+          "severity_id": 4
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.86.167.50"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.151.161"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 57
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.180.102.127"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.102.54"
+          },
+          "user": {
+            "name": "john"
+          },
+          "severity_id": 4
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.122.176.61"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.133.130"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 92
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.36.19.70"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.6.249"
+          },
+          "user": {
+            "name": "admin"
+          },
+          "severity_id": 65
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.52.12.114"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.97.56"
+          },
+          "user": {
+            "name": "svc_backup"
+          },
+          "severity_id": 27
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.133.156.33"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.45.157"
+          },
+          "user": {
+            "name": "alice"
+          },
+          "severity_id": 19
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.28.137.136"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.157.87"
+          },
+          "user": {
+            "name": "john"
+          },
+          "severity_id": 85
+        }
+      },
+      {
+        "alert": "Failed Login Detection",
+        "rule_id": "sigma-001",
+        "severity": "high",
+        "event": {
+          "class_uid": 1001,
+          "category_name": "Security",
+          "activity_name": "login_failed",
+          "src_endpoint": {
+            "ip": "10.212.90.11"
+          },
+          "dst_endpoint": {
+            "ip": "172.16.211.224"
+          },
+          "user": {
+            "name": "john"
+          },
+          "severity_id": 52
+        }
+      }
+    ],
+    "mitre_techniques": [
+      "Unknown"
+    ]
+  }
+]
